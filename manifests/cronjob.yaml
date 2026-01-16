@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: monitor-skrypt
+spec:
+  schedule: "*/5 * * * *"  # Co 5 minut
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: monitor
+            image: ghcr.io/kt-tech-01/moj-monitor:v1
+          restartPolicy: OnFailure
