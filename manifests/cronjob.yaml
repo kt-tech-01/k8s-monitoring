@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: monitor-skrypt
+  namespace: my-monitoring
 spec:
   schedule: "*/5 * * * *"  # Co 5 minut
   jobTemplate:
@@ -10,5 +11,5 @@ spec:
         spec:
           containers:
           - name: monitor
-            image: ghcr.io/kt-tech-01/moj-monitor:v1
+            image: ghcr.io/kt-tech-01/moj-monitor:v2
           restartPolicy: OnFailure
